@@ -6,11 +6,11 @@
 --- PREFIX: Themed
 --- BADGE_COLOR: 8247A5
 --- LOADER_VERSION_GEQ: 1.0.0
---- VERSION: 1.1
+--- VERSION: 1.2
 
 -- MOD SETTINGS
 THEMED = {
-    Debug = false,
+    Debug = true,
     CombatAces = true,
     Cosmic = true,
     Mischievous = true,

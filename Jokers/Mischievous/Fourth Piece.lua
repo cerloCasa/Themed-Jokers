@@ -29,10 +29,6 @@ SMODS.Joker { -- Fourth Piece of the Mischievous One
     eternal_compat = true,
     perishable_compat = true,
     Mischievous = 'Fourth',
-    add_to_deck = function(self,card,from_debuff)
-    end,
-    remove_from_deck = function(self, card, from_debuff)
-    end,
     calculate = function(self,card,context)
         if context.joker_main then
             return {

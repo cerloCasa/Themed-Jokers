@@ -164,18 +164,25 @@ function UTIL.countMischievous(args)
 end
 
 function UTIL.partsMischievous()
-    local Parts = {
-        First = false,
-        Second = false,
-        Third = false,
-        Fourth = false,
-        Cultist = false
-    }
+    local Parts = {}
+    Parts['j_Themed_MO-FirstPiece'] = true
+    Parts['j_Themed_MO-SecondPiece'] = true
+    Parts['j_Themed_MO-ThirdPiece'] = true
+    Parts['j_Themed_MO-FourthPiece'] = true
+    Parts['j_Themed_MO-Cultist'] = true
     for k,v in ipairs(G.jokers.cards) do
-        local MISCHIEVOUS = v.config.center.Mischievous
-        if MISCHIEVOUS and MISCHIEVOUS ~= 'Jimbo' and not Parts[MISCHIEVOUS] then
-            Parts[MISCHIEVOUS] = k
+        local KEY = v.config.center.key
+        if Parts[KEY] and Parts[KEY] == true then
+            Parts[KEY] = k
         end
+    end
+    for k,v in pairs(Parts) do
+        if v == true then
+            Parts[k] = false
+        end
+    end
+    if THEMED.Debug then
+        print('The Mischievous parts are: '..tprint(Parts))
     end
     return Parts
 end

@@ -32,10 +32,6 @@ SMODS.Joker { -- Cultist
     eternal_compat = true,
     perishable_compat = true,
     Mischievous = 'Cultist',
-    add_to_deck = function(self,card,from_debuff)
-    end,
-    remove_from_deck = function(self, card, from_debuff)
-    end,
     calculate = function(self,card,context)
         if context.joker_main then
             local XMult = 1 + 0.2 * UTIL.countMischievous()

@@ -31,25 +31,33 @@ SMODS.Joker { -- Jimbo the Mischievous One
     eternal_compat = true,
     perishable_compat = true,
     Mischievous = 'Jimbo',
-    add_to_deck = function(self,card,from_debuff)
-    end,
-    remove_from_deck = function(self, card, from_debuff)
-    end,
     calculate = function(self,card,context)
         if context.setting_blind and not context.blueprint then
-            local increment = 0
-            for k,v in ipairs(G.jokers.cards) do
-                local MISCHIEVOUS = v.config.center.Mischievous
-                if MISCHIEVOUS and MISCHIEVOUS ~= 'Jimbo' and MISCHIEVOUS ~= 'Cultist' then
-                    v.config.center.Mischievous = nil
-                    UTIL.destroyJoker(v)
-                    increment = increment + 1.5
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    local increment = 0
+                    for k,v in ipairs(G.jokers.cards) do
+                        local KEY = v.config.center.key
+                        local AcceptedKeys = {}
+                        AcceptedKeys['j_Themed_MO-FirstPiece'] = true
+                        AcceptedKeys['j_Themed_MO-SecondPiece'] = true
+                        AcceptedKeys['j_Themed_MO-ThirdPiece'] = true
+                        AcceptedKeys['j_Themed_MO-FourthPiece'] = true
+                        if KEY and AcceptedKeys[KEY] then
+                            v.config.center.Mischievous = nil
+                            UTIL.destroyJoker(v)
+                            increment = increment + 1.5
+                        end
+                    end
+                    card.ability.extra.XMult = card.ability.extra.XMult + increment
+                    if increment > 0 then
+                        card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.XMult}}, colour = G.C.RED, card = card})
+                    end
+                    return true
                 end
-            end
-            card.ability.extra.XMult = card.ability.extra.XMult + increment
-            if increment > 0 then
-                card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.XMult}}, colour = G.C.RED, card = card})
-            end
+            }))
         end
         if context.joker_main then
             return {
