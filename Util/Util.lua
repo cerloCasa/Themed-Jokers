@@ -1,5 +1,16 @@
 local UTIL = {}
 
+function UTIL.showMessage(args) -- args{card, message, colour}
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.15,
+        func = function()
+            card_eval_status_text(args.card, 'extra', nil, nil, nil, {message = args.message, colour = args.colour, instant=true})
+            return true
+        end
+    }))
+end
+
 function UTIL.createJoker(key,edition,forced)
     if THEMED.Debug then
         print("Creating Joker: " .. key)
@@ -209,15 +220,7 @@ function UTIL.gainToken(args)
     end
 
     card.ability.extra.Tokens = card.ability.extra.Tokens + increment
-
-    G.E_MANAGER:add_event(Event({
-        trigger = 'after',
-        delay = 0.15,
-        func = function()
-            card_eval_status_text(card, 'extra', nil, nil, nil, {message = '+'..increment..' Tokens!', colour = G.C.PURPLE, instant=true})
-            return true
-        end
-    }))
+    UTIL.showMessage{card = card, message = ('+'..increment..' Tokens!'), colour = G.C.PURPLE}
     return true
 end
 
@@ -238,15 +241,62 @@ function UTIL.allCosmicGainToken(increment)
     for k,v in ipairs(G.jokers.cards) do
         if v.config.center.Cosmic then
             v.ability.extra.Tokens = v.ability.extra.Tokens + increment
+            UTIL.showMessage{card = v, message = '+'..increment..' Tokens!', colour = G.C.PURPLE}
+        end
+    end
+end
 
-            G.E_MANAGER:add_event(Event({
-                trigger = 'after',
-                delay = 0.15,
-                func = function()
-                    card_eval_status_text(v, 'extra', nil, nil, nil, {message = '+'..increment..' Tokens!', colour = G.C.PURPLE, instant=true})
-                    return true
-                end
-            }))
+function UTIL.checkKarma(card,forced)
+    if not card.config.center.Omen then
+        return
+    end
+    if forced == 'Good' then
+        card.config.center.Omen = 'Good'
+        UTIL.goodKarma(card)
+        return    
+    end
+    if forced == 'Bad' then
+        card.config.center.Omen = 'Bad'
+        UTIL.badKarma(card)
+        return    
+    end
+    local GoodOdds = card.ability.extra.GoodOdds
+    if UTIL.random(1,GoodOdds) then
+        card.config.center.Omen = 'Good'
+        UTIL.goodKarma(card)
+        return
+    end
+    local BadOdds = card.ability.extra.BadOdds
+    if UTIL.random(1,BadOdds) then
+        card.config.center.Omen = 'Bad'
+        UTIL.badKarma(card)
+        return
+    end
+    card.config.center.Omen = true
+end
+
+function UTIL.goodKarma(card)
+    if THEMED.Debug then
+        print(card.config.center.key..' triggered Good Karma')
+    end
+    UTIL.showMessage{card = card, message = 'Good Karma!', colour = G.C.GREEN}
+    for k,v in ipairs(G.jokers.cards) do
+        if v.config.center.key == 'j_Themed_O-Seven' then
+            v.ability.extra.XMult = v.ability.extra.XMult + 0.25
+            UTIL.showMessage{card = v, message = localize{type = 'variable', key = 'a_xmult', vars = {v.ability.extra.XMult}}, colour = G.C.RED}
+        end
+    end
+end
+
+function UTIL.badKarma(card)
+    if THEMED.Debug then
+        print(card.config.center.key..' triggered Bad Karma')
+    end
+    UTIL.showMessage{card = card, message = 'Bad Karma!', colour = G.C.RED}
+    for k,v in ipairs(G.jokers.cards) do
+        if v.config.center.key == 'j_Themed_O-Thirteen' then
+            v.ability.extra.XMult = v.ability.extra.XMult + 0.25
+            UTIL.showMessage{card = v, message = localize{type = 'variable', key = 'a_xmult', vars = {v.ability.extra.XMult}}, colour = G.C.RED}
         end
     end
 end

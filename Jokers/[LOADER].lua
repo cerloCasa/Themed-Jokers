@@ -4,7 +4,7 @@ if THEMED.CombatAces then
     local SUPPLIES = SMODS.load_file('Jokers/Combat Aces/Supplies.lua')()
     local GENERAL = SMODS.load_file('Jokers/Combat Aces/General.lua')()
     local RECRUITER = SMODS.load_file('Jokers/Combat Aces/Recruiter.lua')()
-    local SECRET AGENT = SMODS.load_file('Jokers/Combat Aces/Secret Agent.lua')()
+    local SECRET_AGENT = SMODS.load_file('Jokers/Combat Aces/Secret Agent.lua')()
     local PROMOTION = SMODS.load_file('Jokers/Combat Aces/Promotion.lua')()
     local VETERAN = SMODS.load_file('Jokers/Combat Aces/Veteran.lua')()
 end
@@ -32,4 +32,13 @@ if THEMED.Mischievous then
     local FOURTH = SMODS.load_file('Jokers/Mischievous/Fourth Piece.lua')()
     local CULTIST = SMODS.load_file('Jokers/Mischievous/Cultist.lua')()
     local JIMBO = SMODS.load_file('Jokers/Mischievous/Jimbo the Mischievous One.lua')()
+end
+
+if THEMED.Omen then
+    local MIRROR_SHARD = SMODS.load_file('Jokers/Omen/Mirror Shard.lua')()
+    local BROKEN_MIRROR = SMODS.load_file('Jokers/Omen/Broken Mirror.lua')()
+    local BLACK_CAT = SMODS.load_file('Jokers/Omen/Black Cat.lua')()
+    local SUSPICIUOS_LADDER = SMODS.load_file('Jokers/Omen/Suspicious Ladder.lua')()
+    local THIRTEEN = SMODS.load_file('Jokers/Omen/Thirteen.lua')()
+    local SEVEN = SMODS.load_file('Jokers/Omen/Seven.lua')()
 end

@@ -36,14 +36,7 @@ SMODS.Consumable {
         UTIL.allCosmicGainToken(Tokens)
         for k,v in ipairs(G.hand.highlighted) do
             v.ability.perma_bonus = (v.ability.perma_bonus or 0) + Chips
-            G.E_MANAGER:add_event(Event({
-                trigger = 'after',
-                delay = 0.15,
-                func = function()
-                    card_eval_status_text(v, 'extra', nil, nil, nil, {message = 'Cosmic Upgrade!', colour = G.C.PURPLE, instant=true})
-                    return true
-                end
-            }))
+            UTIL.showMessage{card = v, message = 'Cosmic Upgrade!', colour = G.C.PURPLE}
         end
     end
 }
