@@ -43,13 +43,13 @@ SMODS.Joker { -- Cultist
         end
         if context.setting_blind then
             local Parts = UTIL.partsMischievous()
-            if not Parts.First then
+            if not Parts['j_Themed_MO-FirstPiece'] then
                 UTIL.createJoker('j_Themed_MO-FirstPiece')
-            elseif not Parts.Second then
+            elseif not Parts['j_Themed_MO-SecondPiece'] then
                 UTIL.createJoker('j_Themed_MO-SecondPiece')
-            elseif not Parts.Third then
+            elseif not Parts['j_Themed_MO-ThirdPiece'] then
                 UTIL.createJoker('j_Themed_MO-ThirdPiece')
-            elseif not Parts.Fourth then
+            elseif not Parts['j_Themed_MO-FourthPiece'] then
                 UTIL.createJoker('j_Themed_MO-FourthPiece')
             else
                 UTIL.createJoker('j_Themed_MO-FirstPiece')
