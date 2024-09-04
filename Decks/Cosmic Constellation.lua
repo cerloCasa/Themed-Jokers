@@ -16,7 +16,8 @@ SMODS.Back {
     unlocked = true,
     discovered = true,
     apply = function(self)
-        --
+        UTIL.createConsumeable{key = 'c_Themed_C-Cosmos', set = 'Tarot'}
+        UTIL.createConsumeable{key = 'c_Themed_C-Sign', set = 'Tarot'}
     end,
     trigger_effect = function(self, args)
     end
