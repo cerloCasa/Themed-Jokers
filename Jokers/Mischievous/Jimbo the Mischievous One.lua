@@ -14,7 +14,7 @@ SMODS.Joker { -- Jimbo the Mischievous One
         },
     },
     loc_vars = function(self, info_queue, card)
-        if G.GAME and card.area == G.jokers then
+        if card.area == G.jokers then
             return {vars = {card.ability.extra.XMult}}
         else
             return {vars = {6}}

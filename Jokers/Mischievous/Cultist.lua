@@ -15,7 +15,7 @@ SMODS.Joker { -- Cultist
         },
     },
     loc_vars = function(self, info_queue, card)
-        if G.GAME and card.area == G.jokers then
+        if card.area == G.jokers then
             local XMult = 1 + 0.2 * UTIL.countMischievous()
             return {vars = {XMult}}
         else

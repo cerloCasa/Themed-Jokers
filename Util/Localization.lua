@@ -21,4 +21,11 @@ function SMODS.current_mod.process_loc_text()
             '{C:purple}Total Cosmic Tokens{C:inactive}: {X:purple,C:white}#1#'
         }
 	}
+    G.localization.descriptions.Tarot['Themed_Sign_Ophiuchus'] = {
+        name = 'The Sign',
+		text = {
+            'All {C:purple}Cosmic Jokers{} gain',
+            '{C:purple}+10 Cosmic Tokens'
+        }
+	}
 end

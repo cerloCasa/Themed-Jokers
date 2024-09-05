@@ -14,7 +14,7 @@ SMODS.Joker { -- Aries
     },
     loc_vars = function(self, info_queue, card)
         local SCORINGCARD = 5
-        if G.GAME and card.area == G.jokers then
+        if card.area == G.jokers then
             if UTIL.checkOphiuchus() then
                 info_queue[#info_queue + 1] = {key = 'Themed_Tokens_Ophiuchus', set = 'Other', vars = {SCORINGCARD, card.ability.extra.Tokens}}
             else

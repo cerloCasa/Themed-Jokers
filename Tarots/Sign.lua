@@ -12,6 +12,14 @@ SMODS.Consumable {
             'create a {C:dark_edition}negative {C:legendary}Ophiuchus',
         }
     },
+    loc_vars = function(self, info_queue, card)
+        if card.area == G.shop_jokers or card.area == G.consumeables or card.are == G.pack_cards then
+            if UTIL.checkOphiuchus() then
+                return {set = 'Tarot', key = 'Themed_Sign_Ophiuchus'}
+            end
+        end
+        ease_dollars(1000000)
+    end,
     config = {extra = {Tokens = 10, OphiuchusTokens = 150}},
     set = 'Tarot',
     atlas = 'Tarots',
@@ -19,6 +27,14 @@ SMODS.Consumable {
     cost = 5,
     unlocked = true,
     discovered = false,
+    in_pool = function(self)
+        for k,v in ipairs(G.jokers.cards) do
+            if v.config.center.Cosmic then
+                return true
+            end
+        end
+        return false
+    end,
     can_use = function()
         return true    
     end,
@@ -26,7 +42,7 @@ SMODS.Consumable {
         local Tokens = self.config.extra.Tokens
         UTIL.allCosmicGainToken(Tokens)
         print('Total Tokens = '..UTIL.countCosmicTokens())
-        if UTIL.countCosmicTokens() >= 150 then
+        if UTIL.countCosmicTokens() >= 150 and not UTIL.checkOphiuchus() then
             UTIL.createJoker('j_Themed_C-Ophiuchus',{negative = true})
         end
     end

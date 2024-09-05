@@ -13,7 +13,7 @@ SMODS.Joker { -- First Piece of the Mischievous One
         },
     },
     loc_vars = function(self, info_queue, card)
-        if G.GAME and card.area == G.jokers then
+        if card.area == G.jokers then
             return {vars = {UTIL.countMischievous()}}
         else
             return {vars = {1}}

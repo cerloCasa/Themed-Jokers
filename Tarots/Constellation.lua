@@ -20,6 +20,14 @@ SMODS.Consumable {
     cost = 4,
     unlocked = true,
     discovered = false,
+    in_pool = function(self)
+        for k,v in ipairs(G.jokers.cards) do
+            if v.config.center.Cosmic then
+                return true
+            end
+        end
+        return false
+    end,
     can_use = function()
         local MaxHighlighted = 3
         if G.STATE == G.STATES.SELECTING_HAND or G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK or G.STATE == G.STATES.PLANET_PACK then
