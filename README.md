@@ -3,7 +3,7 @@
 This mod is a remake of Blizzow's [Themed Jokers](https://github.com/BlizzowX/Balatro---Themed-Jokers).
 # Installation
 If you have [Git](https://git-scm.com/downloads) installed, open a terminal in your *Mods* folder and type `git clone https://github.com/cerloCasa/Themed-Jokers.git`  
-Alternatively, you can go to the [main](https://github.com/cerloCasa/Themed-Jokers) page and click on the green "<> Code" button, then "Download ZIP", extracting the downloaded file and moving the *Themed-Jokers-main* folder into your *Mods* folder. 
+Alternatively, you can go to the [main](https://github.com/cerloCasa/Themed-Jokers) page and click on the green ![CODE](https://i.imgur.com/GnuYDAg.png) button, then click on ![DOWNLOAD ZIP](https://i.imgur.com/TCWz6ea.png), extract the downloaded file and move the *Themed-Jokers-main* folder into your *Mods* folder. 
 # Additions
 ## Combat Aces
 - 8 Jokers
