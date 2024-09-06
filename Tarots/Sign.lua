@@ -1,7 +1,5 @@
 local UTIL = SMODS.load_file('Util/Util.lua')()
 
-
-
 SMODS.Consumable {
     key = 'C-Sign',
     loc_txt = {
