@@ -29,3 +29,6 @@ local DECKS = SMODS.load_file('Decks/[LOADER].lua')()
 
 -- TAROTS
 local TAROTS = SMODS.load_file('Tarots/[LOADER].lua')()
+
+-- MODS COMPATIBILITY
+local MODS = SMODS.load_file('Mods Compatibility/[LOADER].lua')()

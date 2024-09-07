@@ -1,0 +1,1 @@
+SMODS.load_file('Mods Compatibility/Card Sleeves.lua')()
