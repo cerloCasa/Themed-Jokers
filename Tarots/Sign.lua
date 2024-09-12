@@ -11,7 +11,7 @@ SMODS.Consumable {
         }
     },
     loc_vars = function(self, info_queue, card)
-        if card.area == G.shop_jokers or card.area == G.consumeables or card.area == G.pack_cards then
+        if not card or card.area == G.shop_jokers or card.area == G.consumeables or card.area == G.pack_cards then
             if UTIL.checkOphiuchus() then
                 return {set = 'Tarot', key = 'Themed_Sign_Ophiuchus'}
             end

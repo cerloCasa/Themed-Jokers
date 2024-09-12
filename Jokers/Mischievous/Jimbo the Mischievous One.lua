@@ -62,7 +62,7 @@ SMODS.Joker { -- Jimbo the Mischievous One
         if context.joker_main then
             return {
                 message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.XMult}},
-                mult_mod = card.ability.extra.XMult,
+                Xmult_mod = card.ability.extra.XMult,
                 card = card
             }
         end
