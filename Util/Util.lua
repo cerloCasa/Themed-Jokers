@@ -34,11 +34,17 @@ function UTIL.createJoker(key,edition,forced)
         end}))
 end
 
-function UTIL.destroyJoker(card)
+function UTIL.destroyJoker(card, istant)
     if THEMED.Debug then
         print("Removing Joker: "..card.config.center_key)
     end
-    G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.3, blockable = false,
+    if not card then
+        if THEMED.Debug then
+            print("Joker doesn\'t exist")
+        end
+        return false
+    end
+    G.E_MANAGER:add_event(Event({trigger = (istant and 'immediate') or 'after', delay = 0.3, blockable = false,
         func = function()
                 G.jokers:remove_card(card)
                 card:remove()

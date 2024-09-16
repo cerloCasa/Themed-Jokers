@@ -10,7 +10,7 @@
 
 -- MOD SETTINGS
 THEMED = {
-    Debug = false,
+    Debug = true,
     CombatAces = true,
     Cosmic = true,
     Mischievous = true,

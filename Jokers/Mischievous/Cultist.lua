@@ -56,18 +56,25 @@ SMODS.Joker { -- Cultist
             end
         end
         if context.end_of_round and not (context.individual or context.repetition or context.blueprint) then
-            local Parts = UTIL.canEvolveMischievous()
-            if Parts then
-                for k,v in pairs(Parts) do
-                    UTIL.destroyJoker(G.jokers.cards[v])
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    local Parts = UTIL.canEvolveMischievous()
+                    if Parts then
+                        for k,v in pairs(Parts) do
+                            UTIL.destroyJoker(G.jokers.cards[v], true)
+                        end
+                        UTIL.createJoker('j_Themed_MO-Jimbo')
+                        return {
+                            message = 'HE RETURNS ONCE MORE!',
+                            colour = G.C.LEGENDARY,
+                            card = card
+                        }
+                    end
+                    return true
                 end
-                UTIL.createJoker('j_Themed_MO-Jimbo')
-                return {
-                    message = 'HE RETURNS ONCE MORE!',
-                    colour = G.C.LEGENDARY,
-                    card = card
-                }
-            end
+            }))
         end
     end,
 }
