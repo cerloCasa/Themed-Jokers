@@ -19,9 +19,11 @@ SMODS.Consumable {
     unlocked = true,
     discovered = false,
     in_pool = function(self)
-        for k,v in ipairs(G.jokers.cards) do
-            if v.config.center.Cosmic then
-                return true
+        if G.jokers then
+            for k,v in ipairs(G.jokers.cards) do
+                if v.config.center.Cosmic then
+                    return true
+                end
             end
         end
         return false
